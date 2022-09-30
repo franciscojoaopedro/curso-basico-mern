@@ -3,7 +3,9 @@ const mongoose=require("mongoose");
 const cookieParser=require("cookie-parser");
 const cors=require("cors");
 const path=require("path");
-const routes=require("./src/routes")
+
+const routerUsuarios=require("./src/routes/usuarios.routes");
+const routerProdutos=require("./src/routes/produtos.routes");
 
 const port=process.env.PORT || 5000;
 
@@ -15,7 +17,9 @@ app.use(cookieParser());
 require("./src/database");
 
 
-app.use("/",routes)
+app.use("/",routerUsuarios);
+app.use("/",routerProdutos);
+
 
 app.listen(port,()=>{
     console.log(`Servidor rodando na porta ${port}`);
